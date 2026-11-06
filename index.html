@@ -1,0 +1,412 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FOOX POOL | Genome Lab</title>
+<style>
+:root {
+  --bg:#07111f;
+  --panel:#101f32;
+  --cyan:#35e6e6;
+  --blue:#528cff;
+  --purple:#a77bff;
+  --white:#edf7ff;
+  --muted:#9eb3c9;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--white);
+  font-family:Arial,sans-serif;
+}
+header{
+  position:sticky;top:0;z-index:10;
+  background:#07111fee;backdrop-filter:blur(15px);
+  border-bottom:1px solid #23405b;
+  padding:15px 6%;display:flex;
+  align-items:center;justify-content:space-between;gap:15px;
+}
+.logo{font-size:22px;font-weight:900;letter-spacing:2px}
+.logo span{color:var(--cyan)}
+nav{display:flex;gap:15px;flex-wrap:wrap}
+nav a{color:var(--muted);text-decoration:none;font-size:13px}
+nav a:hover{color:var(--cyan)}
+.hero{
+  min-height:500px;padding:90px 8%;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:40px;flex-wrap:wrap;
+  background:radial-gradient(circle at 75% 40%,#174d6b 0%,transparent 38%),
+  linear-gradient(130deg,#07111f,#102b43);
+}
+.hero-content{max-width:600px}
+.tag{color:var(--cyan);letter-spacing:4px;font-size:12px}
+h1{font-size:clamp(42px,7vw,75px);margin:15px 0}
+h1 span{color:var(--cyan)}
+.hero p{color:var(--muted);line-height:1.7;font-size:17px}
+.btn{
+  display:inline-block;background:var(--cyan);color:#04121b;
+  border:0;border-radius:10px;padding:13px 20px;
+  font-weight:bold;cursor:pointer;text-decoration:none;
+  margin-top:15px;
+}
+.dna-art{font-size:140px;filter:drop-shadow(0 0 25px #35e6e688)}
+section{padding:65px 7%;scroll-margin-top:80px}
+.section-title{font-size:32px;margin:0 0 10px}
+.subtitle{color:var(--muted);line-height:1.6;margin-bottom:30px}
+.grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:18px;
+}
+.card{
+  background:linear-gradient(145deg,#142941,#0c192a);
+  border:1px solid #29445f;border-radius:17px;padding:23px;
+  transition:.25s;
+}
+.card:hover{transform:translateY(-5px);border-color:var(--cyan)}
+.card h3{color:var(--cyan)}
+.card p{color:var(--muted);line-height:1.6}
+.icon{font-size:32px}
+.panel{
+  background:#0d1c2d;border:1px solid #29445f;
+  border-radius:18px;padding:25px;margin-top:20px;
+}
+button,select{
+  background:#18334d;color:white;border:1px solid #41627d;
+  border-radius:8px;padding:11px;cursor:pointer;margin:5px;
+}
+button:hover{border-color:var(--cyan)}
+input{accent-color:var(--cyan)}
+.result{color:var(--cyan);font-weight:bold;min-height:25px;margin-top:12px}
+.bases{display:flex;gap:10px;flex-wrap:wrap;margin:15px 0}
+.base{
+  width:55px;height:55px;border-radius:12px;
+  display:grid;place-items:center;font-size:23px;font-weight:bold;
+  background:#1a3651;border:1px solid #52718d;cursor:pointer;
+}
+.base.selected{background:var(--cyan);color:#07111f}
+.sequence{
+  display:flex;gap:7px;flex-wrap:wrap;margin:15px 0;
+}
+.sequence span{
+  padding:10px 13px;border-radius:7px;background:#1c3955;
+  font-weight:bold;
+}
+.chromosome{
+  width:48px;height:90px;border-radius:50% 50% 40% 40%;
+  background:linear-gradient(90deg,#a77bff,#528cff,#a77bff);
+  margin:10px auto;transform:rotate(15deg);
+  box-shadow:0 0 15px #a77bff66;
+}
+.step{border-left:3px solid var(--cyan);padding:10px 18px;margin:15px 0}
+.step strong{color:var(--cyan)}
+footer{
+  text-align:center;padding:35px;color:var(--muted);
+  border-top:1px solid #29445f;
+}
+.small{font-size:12px;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">FOOX <span>POOL</span></div>
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#laboratorio">ADN</a>
+    <a href="#cromosomas">Cromosomas</a>
+    <a href="#expresion">Expresión</a>
+    <a href="#explorer">Explorer</a>
+    <a href="#mitos">Mitos</a>
+    <a href="#desafio">Desafío</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+  <div class="hero-content">
+    <div class="tag">WELCOME TO THE GENOME LAB</div>
+    <h1>DESCUBRE EL<br><span>GENOMA HUMANO</span></h1>
+    <p>
+      Tu cuerpo guarda millones de instrucciones. Explora el ADN,
+      descubre cómo funcionan los genes y aprende sobre la información
+      que forma parte de cada ser humano.
+    </p>
+    <a class="btn" href="#laboratorio">ENTRAR AL LABORATORIO ↗</a>
+  </div>
+  <div class="dna-art">🧬</div>
+</section>
+
+<section id="laboratorio">
+  <div class="tag">01 / DNA LAB</div>
+  <h2 class="section-title">Laboratorio de ADN</h2>
+  <p class="subtitle">Construye una cadena complementaria. Selecciona una base y descubre con cuál se empareja.</p>
+  <div class="panel">
+    <h3>Cadena original</h3>
+    <div class="sequence" id="original"></div>
+    <h3>Completa la cadena complementaria</h3>
+    <div class="bases" id="baseButtons"></div>
+    <div class="sequence" id="answer"></div>
+    <button onclick="checkDNA()">Comprobar cadena</button>
+    <button onclick="resetDNA()">Reiniciar</button>
+    <div class="result" id="dnaResult"></div>
+    <p class="small">Regla: A se une con T y C se une con G.</p>
+  </div>
+</section>
+
+<section id="cromosomas">
+  <div class="tag">02 / CHROMOSOME MAP</div>
+  <h2 class="section-title">Explorador de cromosomas</h2>
+  <p class="subtitle">Los seres humanos normalmente tienen 46 cromosomas organizados en 23 pares.</p>
+  <div class="grid" id="chromosomeGrid"></div>
+  <div class="panel" id="chromosomeInfo">
+    <h3>Selecciona un par cromosómico</h3>
+    <p class="subtitle">Aquí aparecerá información sobre el par que elijas.</p>
+  </div>
+  <p class="small">Representación educativa: las tarjetas no muestran la forma ni el tamaño real de los cromosomas.</p>
+</section>
+
+<section id="expresion">
+  <div class="tag">03 / GENE EXPRESSION</div>
+  <h2 class="section-title">Expresión genética</h2>
+  <p class="subtitle">Descubre cómo una instrucción almacenada en el ADN puede utilizarse para fabricar una proteína.</p>
+  <div class="panel">
+    <div class="step"><strong>1. ADN</strong><p>La información genética se almacena en el ADN, que contiene instrucciones para el funcionamiento celular.</p></div>
+    <div class="step"><strong>2. ARN mensajero</strong><p>Durante la transcripción, la célula produce una copia de ARN mensajero a partir de un segmento de ADN.</p></div>
+    <div class="step"><strong>3. Proteína</strong><p>Durante la traducción, los ribosomas leen el ARN mensajero y ensamblan aminoácidos para formar una proteína.</p></div>
+    <button onclick="showExpression()">Ver recorrido interactivo</button>
+    <div class="result" id="expressionResult"></div>
+  </div>
+</section>
+
+<section id="explorer">
+  <div class="tag">04 / GENETIC EXPLORER</div>
+  <h2 class="section-title">Genetic Explorer</h2>
+  <p class="subtitle">Descubre lo que llevas en tus genes. Explora la herencia y aprende cómo se transmite la información genética.</p>
+  <div class="grid">
+    <div class="card">
+      <div class="icon">🧬</div>
+      <h3>Herencia genética</h3>
+      <p>Recibimos información genética de nuestros progenitores biológicos. Cada persona tiene una combinación particular de variantes genéticas.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🔍</div>
+      <h3>Genes y características</h3>
+      <p>Los genes participan en el desarrollo y funcionamiento del organismo. Muchas características también dependen del ambiente.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🧪</div>
+      <h3>Genética interactiva</h3>
+      <p>Explora ejemplos sencillos de cómo pueden heredarse algunas variantes genéticas.</p>
+    </div>
+    <div class="card">
+      <div class="icon">💡</div>
+      <h3>Mitos y realidades</h3>
+      <p>Aprende a diferenciar información científica de ideas equivocadas sobre el ADN.</p>
+    </div>
+  </div>
+  <div class="panel">
+    <h3>Árbol genético ficticio</h3>
+    <p class="subtitle">Ejemplo educativo de una característica hereditaria simplificada. No representa una predicción real.</p>
+    <div style="text-align:center;font-size:25px">👨‍👩‍👧‍👦</div>
+    <div class="grid">
+      <div class="card"><h3>Generación 1</h3><p>Dos progenitores ficticios presentan diferentes variantes de un gen.</p></div>
+      <div class="card"><h3>Generación 2</h3><p>Sus descendientes pueden heredar distintas combinaciones de esas variantes.</p></div>
+    </div>
+    <p class="small">La herencia real puede ser mucho más compleja y muchas características dependen de varios genes y del ambiente.</p>
+  </div>
+</section>
+
+<section id="mitos">
+  <div class="tag">05 / MYTH OR FACT</div>
+  <h2 class="section-title">Mitos y realidades</h2>
+  <p class="subtitle">Pon a prueba lo que sabes sobre el genoma humano.</p>
+  <div class="panel">
+    <h3 id="mythQuestion">Todo el ADN humano es exactamente igual entre personas.</h3>
+    <button onclick="answerMyth(true)">Verdadero</button>
+    <button onclick="answerMyth(false)">Falso</button>
+    <div class="result" id="mythResult"></div>
+    <button onclick="nextMyth()">Siguiente afirmación →</button>
+  </div>
+</section>
+
+<section id="desafio">
+  <div class="tag">06 / GENOME CHALLENGE</div>
+  <h2 class="section-title">Desafío Genoma</h2>
+  <p class="subtitle">Responde las preguntas y comprueba cuánto aprendiste.</p>
+  <div class="panel">
+    <div class="small" id="questionNumber">Pregunta 1 de 5</div>
+    <h3 id="quizQuestion"></h3>
+    <div id="quizOptions"></div>
+    <div class="result" id="quizResult"></div>
+    <button id="nextQuestion" onclick="nextQuiz()">Siguiente pregunta</button>
+    <div class="result" id="score"></div>
+  </div>
+</section>
+
+<section>
+  <div class="tag">07 / KNOWLEDGE BASE</div>
+  <h2 class="section-title">Tu viaje por el genoma</h2>
+  <p class="subtitle">Has explorado distintas partes de la genética humana. Sigue aprendiendo y cuestionando lo que descubres.</p>
+  <div class="grid">
+    <div class="card"><h3>ADN</h3><p>Molécula que almacena la información genética.</p></div>
+    <div class="card"><h3>Genes</h3><p>Segmentos de ADN que contribuyen a funciones y características.</p></div>
+    <div class="card"><h3>Genoma</h3><p>Conjunto completo del material genético de un organismo.</p></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="logo">FOOX <span>POOL</span></div>
+  <p>GENOME LAB · Aprende. Explora. Descubre.</p>
+  <p class="small">Contenido educativo. No sustituye fuentes científicas especializadas.</p>
+</footer>
+
+<script>
+// LABORATORIO DE ADN
+const dna = ["A","C","G","T","A","G"];
+const pairs = {A:"T",T:"A",C:"G",G:"C"};
+let selected = [];
+const original = document.getElementById("original");
+const answer = document.getElementById("answer");
+const baseButtons = document.getElementById("baseButtons");
+
+function renderDNA(){
+  original.innerHTML = dna.map(b=>`<span>${b}</span>`).join("");
+  answer.innerHTML = dna.map((_,i)=>`<span>${selected[i] || "_"}</span>`).join("");
+}
+["A","T","C","G"].forEach(base=>{
+  const b=document.createElement("div");
+  b.className="base";b.textContent=base;
+  b.onclick=()=>{
+    if(selected.length<dna.length){
+      selected.push(base);renderDNA();
+    }
+  };
+  baseButtons.appendChild(b);
+});
+function checkDNA(){
+  const correct=dna.every((b,i)=>pairs[b]===selected[i]);
+  document.getElementById("dnaResult").textContent =
+    selected.length!==dna.length ? "Completa todos los espacios primero." :
+    correct ? "¡Excelente! Tu cadena es correcta. 🧬" :
+    "Todavía hay algunas parejas incorrectas. ¡Inténtalo otra vez!";
+}
+function resetDNA(){
+  selected=[];renderDNA();
+  document.getElementById("dnaResult").textContent="";
+}
+renderDNA();
+
+// CROMOSOMAS
+const grid=document.getElementById("chromosomeGrid");
+for(let i=1;i<=23;i++){
+  const card=document.createElement("div");
+  card.className="card";
+  card.innerHTML=`<div class="chromosome"></div><h3>Par ${i}</h3><p>Explora este par cromosómico.</p>`;
+  card.onclick=()=>showChromosome(i);
+  grid.appendChild(card);
+}
+function showChromosome(n){
+  const info=document.getElementById("chromosomeInfo");
+  let description=n===23
+    ? "El par 23 suele corresponder a los cromosomas sexuales. Sus combinaciones más comunes son XX y XY, aunque existen variaciones."
+    : `El par ${n} forma parte de los 22 pares de autosomas. Contiene muchos genes que participan en diferentes funciones del organismo.`;
+  info.innerHTML=`<h3>Par cromosómico ${n}</h3><p>${description}</p>`;
+}
+
+// EXPRESIÓN GENÉTICA
+let expressionStep=0;
+const expressionSteps=[
+  "ADN: la información genética está almacenada en la molécula.",
+  "Transcripción: se produce una molécula de ARN mensajero.",
+  "Traducción: el ribosoma utiliza el ARN para ensamblar una proteína."
+];
+function showExpression(){
+  document.getElementById("expressionResult").textContent=expressionSteps[expressionStep];
+  expressionStep=(expressionStep+1)%expressionSteps.length;
+}
+
+// MITOS Y REALIDADES
+const myths=[
+  {q:"Todo el ADN humano es exactamente igual entre personas.",a:false,ex:"Falso. Compartimos gran parte de nuestro ADN, pero también existen variaciones entre individuos."},
+  {q:"El ADN contiene información genética.",a:true,ex:"Verdadero. El ADN almacena la información hereditaria."},
+  {q:"Todas las características dependen únicamente de los genes.",a:false,ex:"Falso. El ambiente también influye en muchas características."},
+  {q:"Los cromosomas contienen ADN.",a:true,ex:"Verdadero. El ADN se organiza en cromosomas dentro de las células."}
+];
+let mythIndex=0;
+function renderMyth(){
+  document.getElementById("mythQuestion").textContent=myths[mythIndex].q;
+  document.getElementById("mythResult").textContent="";
+}
+function answerMyth(value){
+  const m=myths[mythIndex];
+  document.getElementById("mythResult").textContent=
+    (value===m.a?"¡Correcto! ":"No exactamente. ")+m.ex;
+}
+function nextMyth(){
+  mythIndex=(mythIndex+1)%myths.length;renderMyth();
+}
+renderMyth();
+
+// CUESTIONARIO
+const questions=[
+  {q:"¿Qué molécula almacena la información genética?",o:["ADN","Agua","Glucosa"],a:0},
+  {q:"¿Con qué base se empareja la adenina en el ADN?",o:["Citosina","Timina","Guanina"],a:1},
+  {q:"¿Cuántos pares de cromosomas tiene normalmente una persona?",o:["12","46","23"],a:2},
+  {q:"¿Qué molécula lleva el mensaje del ADN hacia los ribosomas?",o:["ARN mensajero","Lípido","Oxígeno"],a:0},
+  {q:"¿Qué estructura participa en la fabricación de proteínas?",o:["Membrana","Ribosoma","Núcleo"],a:1}
+];
+let qIndex=0, points=0, answered=false;
+function renderQuiz(){
+  answered=false;
+  const q=questions[qIndex];
+  document.getElementById("questionNumber").textContent=`Pregunta ${qIndex+1} de ${questions.length}`;
+  document.getElementById("quizQuestion").textContent=q.q;
+  document.getElementById("quizResult").textContent="";
+  document.getElementById("nextQuestion").textContent=qIndex===questions.length-1?"Ver resultado":"Siguiente pregunta";
+  document.getElementById("quizOptions").innerHTML="";
+  q.o.forEach((option,i)=>{
+    const b=document.createElement("button");
+    b.textContent=option;
+    b.onclick=()=>selectAnswer(i);
+    document.getElementById("quizOptions").appendChild(b);
+  });
+}
+function selectAnswer(i){
+  if(answered)return;
+  answered=true;
+  if(i===questions[qIndex].a){
+    points++;
+    document.getElementById("quizResult").textContent="¡Respuesta correcta! +1 punto";
+  }else{
+    document.getElementById("quizResult").textContent="Respuesta incorrecta. La respuesta correcta era: "+questions[qIndex].o[questions[qIndex].a];
+  }
+}
+function nextQuiz(){
+  if(!answered){
+    document.getElementById("quizResult").textContent="Selecciona una respuesta primero.";
+    return;
+  }
+  if(qIndex<questions.length-1){
+    qIndex++;renderQuiz();
+  }else{
+    document.getElementById("quizQuestion").textContent="¡Desafío completado!";
+    document.getElementById("quizOptions").innerHTML="";
+    document.getElementById("questionNumber").textContent="Resultado final";
+    document.getElementById("quizResult").textContent="";
+    document.getElementById("score").textContent=`Tu puntuación: ${points} de ${questions.length}`;
+    document.getElementById("nextQuestion").textContent="Volver a comenzar";
+    document.getElementById("nextQuestion").onclick=()=>{
+      qIndex=0;points=0;
+      document.getElementById("score").textContent="";
+      document.getElementById("nextQuestion").onclick=nextQuiz;
+      renderQuiz();
+    };
+  }
+}
+renderQuiz();
+</script>
+</body>
+</html>
